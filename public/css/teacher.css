@@ -1,0 +1,94 @@
+.background-guru {
+    background-color: white;
+    background-image: url(../images/guru_biru.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+}
+
+.guru-section {
+    position: relative;
+    z-index: 9;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .guru-section {
+        height: 40vh;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .guru-section {
+        height: 30vh;
+    }
+}
+
+.guru-staff-title {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 1;
+    color: #fff;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+    .guru-staff-title {
+        font-size: 56px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .guru-staff-title {
+        font-size: 40px;
+    }
+}
+
+.guru-data .title {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1;
+    color: #042464;
+}
+
+.staff-data .title {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1;
+    color: #042464;
+}
+
+.pasfoto {
+    max-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.nama {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #042464;
+    text-align: center;
+}
+
+.jabatan {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    color: #042464;
+    text-align: center;
+}
