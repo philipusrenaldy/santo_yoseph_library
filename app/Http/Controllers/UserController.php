@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Exception;
 use Validator;
-use Api;
+use App\Helper\ApiBuilder as Api;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         try{
             $validator = Validator::make($request->all(), [
-                'email' => ['required', 'email'],
+                'username' => ['required'],
                 'password' => ['required']
             ]);
 
