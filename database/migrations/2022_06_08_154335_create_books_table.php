@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('publisher');
             $table->date('published_at');
-            $table->string('published_city ');
+            $table->string('published_city');
             $table->string('NISN');
             $table->string('book_code')->unique();
             $table->string('ISBN');
@@ -28,6 +28,7 @@ class CreateBooksTable extends Migration
             $table->string('synopsis');
             $table->string('abstract');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
