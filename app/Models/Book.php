@@ -24,4 +24,9 @@ class Book extends Model
         'abstract',
         'synopsis'
     ];
+
+    public function getData()
+    {
+
+    }
 }

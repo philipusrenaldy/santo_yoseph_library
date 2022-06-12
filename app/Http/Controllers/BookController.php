@@ -17,6 +17,7 @@ class BookController extends Controller
         $this->code = 200;
         $this->response = [];
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,8 @@ class BookController extends Controller
     public function index()
     {
         try {
-            $this->response = Book::paginate(8);
+            $response = (new Book())->getData();
+            $this->response = Api::pagination($response);
         } catch (Exception $e) {
             $this->code = 500;
             $this->response = $e->getMessage();

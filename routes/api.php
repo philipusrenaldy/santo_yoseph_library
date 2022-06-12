@@ -15,11 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::group(['prefix' => 'user'], function() {
-    Route::post('/register', [UserController::class, 'register']);
-    Route::post('/login', [UserController::class, 'login']);
+Route::group(['prefix' => 'user', 'as' => 'Auth.'], function () {
+    Route::post('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/forgot', [UserController::class, 'forgotPassword'])->name('forgotpassword');
+    Route::post('/reset', [UserController::class, 'resetPassword'])->name('reset');
 });
