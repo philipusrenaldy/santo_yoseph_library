@@ -29,3 +29,5 @@ Route::get('/home/educational', function (){ return view('sites/index/educationa
 Route::get('/home/teacher', function (){ return view('sites/index/teacher'); });
 Route::get('/home/ekskul', function (){ return view('sites/index/ekskul'); });
 Route::get('/home/live_in', function (){ return view('sites/index/live_in'); });
+
+Route::get('/login', function (){ return view('sites/login'); });

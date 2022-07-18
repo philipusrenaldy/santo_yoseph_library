@@ -44,7 +44,7 @@
     <link href="{{ asset('css/elements.css')}}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/about.css') }}" rel="stylesheet">
-    <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('font/font-awesome-4.7.0/css/all.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -97,7 +97,7 @@
 
                     <!-- Header Right Start -->
                     <div class="col-xl-2 col d-none d-sm-flex justify-content-end order-1 order-xl-2">
-                        <a href="#" class="btn btn-account">Account</a>
+                        <a href="{{ url('/login') }}" class="btn btn-account">Account</a>
                     </div>
                     <!-- Header Right End -->
 
@@ -126,45 +126,47 @@
             <div class="row mb-4">
                 <div class="col policy-item">
                     <ul>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;Memberikan kebebasan kepada guru pengajar
-                            untuk mengembangkan dan mengintegrasikan isue tentang lingkungan hidup dalam kurikulum dan
-                            mata pelajaran sekolah.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;&nbsp;Memberikan kebebasan kepada
+                                guru pengajar untuk mengembangkan dan mengintegrasikan isue tentang lingkungan hidup
+                                dalam kurikulum dan mata pelajaran sekolah.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;Menggunakan isue lingkungan hidup sebagai
-                            materi mata pelajaran dan studi kasus.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;&nbsp;Menggunakan isue lingkungan
+                                hidup sebagai materi mata pelajaran dan studi kasus.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;Dapat menggunakan metode secara variatif.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;&nbsp;Dapat menggunakan metode secara
+                                variatif.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mengembangkan dan mendayagunakan fasilitas
-                            sekolah yang berbudaya ramah lingkungan hidup.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;&nbsp;Mengembangkan dan
+                                mendayagunakan fasilitas sekolah yang berbudaya ramah lingkungan hidup.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;Menciptakan suasana sekolah yang nyaman,
-                            bersih dan sehat.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;&nbsp;Menciptakan suasana sekolah
+                                yang nyaman, bersih dan sehat.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Guru/karyawan menjadi panutan bagi siswa dalam
-                            kepedulian lingkungan.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Guru/karyawan menjadi panutan bagi
+                                siswa dalam kepedulian lingkungan.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Menerapkan managemen peduli dalam penghematan
-                            sumber energi, dan sumber daya air.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Menerapkan managemen peduli dalam
+                                penghematan sumber energi, dan sumber daya air.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Mengurangi polusi udara dan polusi suara.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Mengurangi polusi udara dan polusi
+                                suara.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Menjadikan sekolah sebagai lingkungan yang
-                            bebas dari rokok.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Menjadikan sekolah sebagai lingkungan
+                                yang bebas dari rokok.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Menghemat ATK (alat tulis kantor), kertas,
-                            dll.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Menghemat ATK (alat tulis kantor),
+                                kertas, dll.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Menggunakan white board dan penghematan board
-                            marker.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Menggunakan white board dan
+                                penghematan board marker.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Memberdayakan kelompok kerja (Pokja) siswa
-                            dalam pengelolaan lingkungan.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Memberdayakan kelompok kerja (Pokja)
+                                siswa dalam pengelolaan lingkungan.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Menjaga keindahan lingkungan.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Menjaga keindahan lingkungan.</a>
                         </li>
-                        <li><i class="fas fa-angle-right"></i>&nbsp;&nbsp;&nbsp;Memanfaatkan barang bekas dan mengelola sampah
-                            sekolah.
+                        <li><i class="fas fa-angle-right"></i><a>&nbsp;&nbsp;&nbsp;Memanfaatkan barang bekas dan
+                                mengelola sampah sekolah.</a>
                         </li>
                     </ul>
                 </div>

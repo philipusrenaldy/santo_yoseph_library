@@ -26,8 +26,8 @@ body {
 }
 
 .section-about ul {
-    font-family: Poppins, sans-serif;
-    font-weight: 300;
+    content: "\f105";
+    font-family: FontAwesome;
     padding: 0;
     list-style: none;
     line-height: 2;
@@ -49,6 +49,8 @@ body {
 
 .section-about ul a {
     color: inherit;
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
     text-decoration: none;
 }
 
@@ -313,8 +315,8 @@ body {
 }
 
 .policy-item ul {
-    font-family: Poppins, sans-serif;
-    font-weight: 300;
+    font-family: FontAwesome;
+    content: "\f105";
     list-style: none;
     color: white;
     line-height: 2;
@@ -336,11 +338,9 @@ body {
 
 .policy-item ul a {
     color: inherit;
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
     text-decoration: none;
-}
-
-.policy-item ul a:hover {
-    opacity: 1;
 }
 
 /*Siapakah Santo Yoseph CSS*/

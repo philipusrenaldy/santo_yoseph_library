@@ -55,7 +55,7 @@
     <link href="{{ asset('css/elements.css')}}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
-    <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('font/font-awesome-4.7.0/css/all.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -108,7 +108,7 @@
 
                     <!-- Header Right Start -->
                     <div class="col-xl-2 col d-none d-sm-flex justify-content-end order-1 order-xl-2">
-                        <a href="#" class="btn btn-account">Account</a>
+                        <a href="{{ url('/login') }}" class="btn btn-account">Account</a>
                     </div>
                     <!-- Header Right End -->
 
