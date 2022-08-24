@@ -25,8 +25,10 @@ class CreateBooksTable extends Migration
             $table->string('ISBN');
             $table->string('book_size');
             $table->string('note');
-            $table->string('synopsis');
+            $table->text('synopsis');
             $table->string('abstract');
+            $table->string('path_img')->nullable();
+            $table->string('path_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

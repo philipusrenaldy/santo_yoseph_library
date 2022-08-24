@@ -4,104 +4,86 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
-use Illuminate\Http\Request;
+use App\Models\UserHistory;
+use Carbon\Carbon;
 use Exception;
-use App\Helper\ApiBuilder as Api;
+use Response;
 
 class BookController extends Controller
 {
-    private $response, $code;
-
-    public function __construct()
-    {
-        $this->code = 200;
-        $this->response = [];
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function index()
     {
-        try {
-            $response = (new Book())->getData();
-            $this->response = Api::pagination($response);
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->response = $e->getMessage();
+        $books = Book::query();
+        if (request()->has('search')) {
+            $search = \request('search');
+            $books->where('book_name', 'like', "%" . $search . "%");
         }
-        return Api::apiRespond($this->code, $this->response);
+        $books = $books->paginate(4);
+        return view('sites.dashboard.library', ['books' => $books]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param BookRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function store(BookRequest $request)
     {
-        try {
-            $data = $request->validated();
-            $this->response = Book::create($data);
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->response = $e->getMessage();
+        $data = $request->except(['file', 'cover_book']);
+        $data['published_at'] = Carbon::now();
+        if (isset($request->cover_book)) {
+            $file = $request->file('cover_book');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/cover_book';
+            $file->move($destinationPath, $fileName);
+            $data['path_img'] = $fileName;
         }
-        return Api::apiRespond($this->code, $this->response);
+
+        if (isset($request->file)) {
+            $file = $request->file('file');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/book';
+            $file->move($destinationPath, $fileName);
+            $data['path_file'] = $fileName;
+        }
+
+        Book::create($data);
+        return redirect('/library');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Book $schoolBook
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function show(Book $schoolBook)
     {
-        try {
-            $this->response = $schoolBook;
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->response = $e->getMessage();
-        }
-        return Api::apiRespond($this->code, $this->response);
+        return view('sites.dashboard.book_detail', ['books' => $schoolBook]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param BookRequest $request
-     * @param Book $schoolBook
-     * @return \Illuminate\Http\JsonResponse
-     */
+    public function form_page()
+    {
+        return view('sites.dashboard.library_form');
+    }
+
+    public function form_page_edit(Book $schoolBook)
+    {
+        return view('sites.dashboard.library_form_edit', ['data' => $schoolBook]);
+    }
+
     public function update(BookRequest $request, Book $schoolBook)
     {
-        try {
-            $this->response = $schoolBook->update($request->validated());
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->response = $e->getMessage();
-        }
-        return Api::apiRespond($this->code, $this->response);
+        $this->response = $schoolBook->update($request->validated());
+        return redirect('/library');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Book $schoolBook
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function destroy(Book $schoolBook)
     {
-        try {
-            $this->response = $schoolBook->delete();
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->response = $e->getMessage();
-        }
-        return Api::apiRespond($this->code, $this->response);
+        $schoolBook->delete();
+        return redirect('/library');
+    }
+
+    public function book_read($id)
+    {
+        UserHistory::create([
+            'user_id'   => \auth()->user()->id,
+            'book_id'   => $id,
+            'date'      => Carbon::now(),
+            'created_at' => Carbon::now()
+        ]);
+        $buku = Book::query()->where('id', $id)->first();
+        return Response::make(file_get_contents('book/' . $buku->path_file), 200, [
+            'content-type' => 'application/pdf',
+        ]);
     }
 }

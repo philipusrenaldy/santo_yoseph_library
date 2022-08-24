@@ -2,79 +2,93 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Exception;
-use Validator;
-use App\Helper\ApiBuilder as Api;
 use Illuminate\Support\Facades\Auth;
+use App\Charts\HistoryChart;
+use App\Models\UserHistory;
 
 class UserController extends Controller
 {
-    private $data, $code;
-
-    public function __construct()
+    public function index()
     {
-        $this->code = 200;
-        $this->data = [];
+        $students = User::query()->where('is_admin', 0)->where('is_guru', 0);
+        if (request()->has('search')) {
+            $search = \request('search');
+            $students->where('name', 'like', "%" . $search . "%");
+        }
+        $students = $students->paginate(8);
+        return view('sites.dashboard.students', ['students' => $students]);
     }
 
-//   public function register(Request $request)
-//   {
-//        try{
-//            $validator = Validator::make($request->all(), [
-//                'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
-//                'password' => [
-//                    'required', 'string', 'min:8', 'confirmed', 'min:9',
-//                    'regex:/[a-z]/',
-//                    'regex:/[A-Z]/',
-//                    'regex:/[0-9]/',
-//                    'regex:/[@$!%*#?&.s]/']
-//            ]);
-//
-//            if ($validator->fails()) {
-//                return Api::apiRespond(400, $validator->errors()->all());
-//            }
-//
-//            $this->data = User::create([
-//                'name' => $request->name,
-//                'email'=> $request->email,
-//                'password' => Bcrypt($request->password),
-//            ]);
-//        } catch (Exception $e) {
-//            $this->code = 500;
-//            $this->data = $e;
-//        }
-//
-//       return Api::apiRespond($this->code, $this->data);
-//   }
+    public function home()
+    {
+        $today_users = UserHistory::whereDate('created_at', today())->count();
+        $yesterday_users = UserHistory::whereDate('created_at', today()->subDays(1))->count();
+        $users_2_days_ago = UserHistory::whereDate('created_at', today()->subDays(2))->count();
+        $chart = new HistoryChart;
+        $chart->labels(['Two days ago', 'Yesterday', 'Today']);
+        $chart->dataset('Data Peminjaman Buku', 'line', [$users_2_days_ago, $yesterday_users, $today_users]);
+        return view('sites/dashboard/landing', ['chart' => $chart]);
+    }
+
+    public function form_page()
+    {
+        return view('sites.dashboard.student_form');
+    }
+
+    public function form_page_edit(User $student)
+    {
+        return view('sites.dashboard.student_form_edit', ['data' => $student]);
+    }
+
+    public function store(UserRequest $request)
+    {
+        $data = $request->validated();
+        $data['username'] = $data['name'];
+        $data['password'] = bcrypt($data['username']); // default password = Password1
+        $data['created_at'] = Carbon::now();
+        User::create($data);
+        return redirect('/student');
+    }
+
+    public function show(Book $schoolBook)
+    {
+        return view('sites.dashboard.book_detail', ['books' => $schoolBook]);
+    }
+
+    public function update(UserRequest $request, User $student)
+    {
+        $this->response = $student->update($request->validated());
+        return redirect('/student');
+    }
+
+    public function destroy(User $student)
+    {
+        $student->delete();
+        return redirect('/student');
+    }
 
     public function login(Request $request)
     {
-        try{
-            $validator = Validator::make($request->all(), [
-                'username' => ['required'],
-                'password' => ['required']
-            ]);
+        $data = [
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+        ];
 
-            if ($validator->fails()) {
-                return Api::apiRespond(400, $validator->errors()->all());
-            }
-
-            if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-                $user = Auth::user();
-
-                $data['user'] = $user;
-                $data['token'] = $user->createToken('auth-api')->accessToken;
-                $this->data = $data;
-            } else {
-                return Api::apiRespond(400, ['Username Dan Password Anda Salah']);
-            }
-        } catch (Exception $e) {
-            $this->code = 500;
-            $this->data = $e;
+        if (!Auth::Attempt($data)) {
+            alert()->error('Username or password invalid', 'Login Failed')->autoclose(1500);
+            return redirect('/login');
         }
+        alert()->success('Login Success');
+        return redirect('/dashboard');
+    }
 
-        return Api::apiRespond($this->code, $this->data);
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/login');
     }
 }

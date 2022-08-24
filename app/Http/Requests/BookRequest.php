@@ -13,7 +13,7 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'book_name' => '',
+            'author'    => '',
+            'publisher' => '',
+            'published_city' => '',
+            'NISN'      => '',
+            'ISBN'      => '',
+            'book_code' => '',
+            'book_size' => '',
+            'note'      => '',
+            'abstract'  => '',
+            'synopsis'  => '',
+            'file'      => '',
+            'image'     => ''
         ];
     }
 }

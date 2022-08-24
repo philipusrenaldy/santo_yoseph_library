@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Helper;
 
-class ApiBuilder {
+class ApiBuilder
+{
     public static function apiRespond($code, $data, $message = null)
     {
         $response['status'] = $code;
@@ -52,7 +54,7 @@ class ApiBuilder {
             } else {
                 $result = $response->cursorPaginate(request()->query("paginate"))->withQueryString();
             }
-        } else if($type == 'collection') {
+        } else if ($type == 'collection') {
             $result = $response;
         } else {
             $result = $response->get();

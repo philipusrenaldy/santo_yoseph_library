@@ -22,11 +22,12 @@ class Book extends Model
         'book_size',
         'note',
         'abstract',
-        'synopsis'
+        'synopsis',
+        'path_file',
+        'path_img'
     ];
 
     public function getData()
     {
-
     }
 }
