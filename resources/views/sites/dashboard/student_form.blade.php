@@ -31,13 +31,13 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="NISN" class="form-label">NISN</label>
-                    <input type="text" class="form-control" name="NISN" id="NISN">
+                    <input type="text" class="form-control" name="NISN" id="NISN" maxlength="10">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="phoneNumber" id="phoneNumber">
+                    <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" maxlength="14">
                 </div>
             </div>
         </div>
