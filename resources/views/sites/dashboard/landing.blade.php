@@ -12,17 +12,16 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h5 class="h3 mb-0 text-gray-800">Overview</h5>
-    </div>
+{{--    <div class="d-sm-flex align-items-center justify-content-between mb-4">--}}
+{{--        <h5 class="h3 mb-0 title-header">Overview</h5>--}}
+{{--    </div>--}}
 
     <!-- Area Chart -->
     <div class="d-flex flex-row align-items-center justify-content-between">
         <div class="card shadow mb-4 row col-sm-6">
             <!-- Card Header - Dropdown -->
-            <div class="card-header d-flex flex-row align-items-center justify-content-between"
-                style="background-color: #8BC43F;">
-                <h4 class="m-0 font-weight-bold text-white" id="clinicName">Your Profile</h4>
+            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                <h4 class="m-0 card-header-title" id="clinicName">Your Profile</h4>
                 <!-- <div class="dropdown no-arrow">
                     <button data-toggle="modal" data-target="#editProfileModal" class="btn"
                         style="background-color: white; color: #8BC43F; font-weight: bold;">
@@ -37,32 +36,32 @@
                         <div class="row justify-content-center">
                             <div class="form-group row">
                                 <label class="col-md-6 col-form-label"> <strong>NISN</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['NISN'] }}" id="cCode">
                                 </div>
                                 <label class="col-md-6 col-form-label"> <strong>Username</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['username'] }}" id="cPhoneNumber">
                                 </div>
                                 <label class="col-md-6 col-form-label"> <strong>Name</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['name'] }}" id="cPhoneNumber">
                                 </div>
                                 <label class="col-md-6 col-form-label"> <strong>Email</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['email'] }}" id="cPhoneNumber">
                                 </div>
                                 <label class="col-md-6 col-form-label"> <strong>Address</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['address'] }}" id="cPhoneNumber">
                                 </div>
                                 <label class="col-md-6 col-form-label"> <strong>Phone Number</strong> </label>
-                                <div class="col-sm-6">
+                                <div class="col">
                                     <input type="text" readonly class="form-control-plaintext"
                                         placeholder="{{ auth()->user()['phoneNumber'] }}" id="cPhoneNumber">
                                 </div>

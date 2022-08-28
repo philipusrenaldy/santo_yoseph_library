@@ -119,7 +119,7 @@
         <div class="container">
             <div class="row sambutan">
                 <h1 class="content-header">Sambutan Kepala Sekolah</h1>
-                <p>Salam Damai Sejahtera Dalam Tuhan</p>
+                <p>Salam Damai Sejahtera Dalam Tuhan,</p>
                 <p>Puji syukur kami panjatkan kehadirat Tuhan Yang Maha Esa, karena oleh perkenaanNYa maka website ini
                     dapat terus hadir untuk menginformasikan perkembangan pendidikan di SMA Santo Yoseph bagi orang tua
                     dan siswa pada khususnya serta masyarakat pada umumnya.</p>
@@ -143,14 +143,14 @@
                     website, Guru, Siswa dan Masyarakat untuk lebih bijak memanfaatkan website ini. Mari kita gunakan
                     website ini sebagai media yang mendidik, dan semuanya semata-mata demi kemuliaaan nama Tuhan.</p>
                 <p>Salam damai,</p>
-                <p>Totok Susiantara M.M</p>
+                <p>Drs. Susiantara, M.M</p>
             </div>
             <div class="row align-items-center justify-content-md-end mt-5 mb-5">
                 <div class="col-md-auto">
                     <img class="image-totok align-items-end" src="../images/kepsek.png" alt="">
                 </div>
                 <div class="col col-4">
-                    <h3 class="nama_kepsek">Drs. Totok Susiantara M.M</h3>
+                    <h3 class="nama_kepsek">Drs. Susiantara, M.M</h3>
                     <p class="jabatan">Kepala Sekolah</p>
                 </div>
             </div>
